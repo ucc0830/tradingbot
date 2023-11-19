@@ -1,7 +1,7 @@
 import requests
 import keyring
 import json
-import mykeyring
+from mykeyring import *
 import datetime
 
 
@@ -14,6 +14,8 @@ TEST_APP_SECRET = keyring.get_password('test_app_secret','ucc0830')
 # Service Domain
 # REAL_URL = "https://openapi.koreainvestment.com:9443"
 TEST_URL = "https://openapivts.koreainvestment.com:29443"
+
+
 
 def get_access_token():
 	headers = {"content-type":"application/json"}
@@ -36,7 +38,6 @@ def get_access_token():
 
 # REAL_ACCESS_TOKEN = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjIyNTc4MTkyLWViOGUtNDZkZC1hOTc2LTVjNTU0MTg0NTAwZiIsImlzcyI6InVub2d3IiwiZXhwIjoxNzAwMzc3NDc0LCJpYXQiOjE3MDAyOTEwNzQsImp0aSI6IlBTQ3JHNGt5b0Q0ZHZRQUlsdHZQTjFpNW9FWEpPQWxncG1IRCJ9.Xz4_gU2Q6BnYBHJMkAIYdqaoqBb-S6QYyTwXUmDQ6UJ_l_PlGNerJGGvYfGmcaQox2WgmTqcAffYaSHwVZof0Q'
 # TEST_ACCESS_TOKEN = get_access_token()
-
 
 def hashkey(datas):
 	PATH = "uapi/hashkey"
@@ -72,7 +73,7 @@ def select_overseas_balance():
 	url = f"{TEST_URL}/{path}"
 	body = {
     # "CANO":"68149836",
-	"CANO":"50099291",
+	"CANO":my_acct,
     "ACNT_PRDT_CD":"01",
     "OVRS_EXCG_CD":"NASD",
     "TR_CRCY_CD":"USD",
